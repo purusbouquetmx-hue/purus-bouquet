@@ -1,51 +1,36 @@
-
 /* ===== VARIABLES PURUS BOUQUET (ELEGANCIA NEUTRA + ACENTOS) ===== */
 :root {
-    --pb-bg-dark: #121212;          /* Fondo base elegante y neutro */
+    --pb-bg-dark: #121212;
     --pb-bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    --pb-glass-bg: rgba(255, 255, 255, 0.08); /* Cristal más visible */
-    --pb-glass-border: rgba(255, 255, 255, 0.25); /* Borde de cristal nítido */
+    --pb-glass-bg: rgba(255, 255, 255, 0.08);
+    --pb-glass-border: rgba(255, 255, 255, 0.25);
     --pb-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     
     /* Colores exclusivos para la sección Día de Muertos */
-    --dm-orange: #FF6B00;           /* Naranja Cempasúchil vibrante */
-    --dm-purple: #6A1B9A;           /* Morado tradicional profundo */
-    --dm-gold: #FFD700;             /* Toque dorado para lujo */
+    --dm-orange: #FF6B00;
+    --dm-purple: #6A1B9A;
+    --dm-gold: #FFD700;
     
     --pb-text: #ffffff;
     --pb-text-muted: #b0b0b0;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Lato', sans-serif;
+    
+    /* Variables originales de tu diseño */
+    --purpura-oscuro: #2D0A4E;
+    --purpura-medio: #4A148C;
+    --purpura-claro: #764ba2;
+    --dorado-principal: #D4AF37;
+    --dorado-claro: #FFD700;
+    --blanco-puro: #ffffff;
+    --blanco-hueso: #F9F5F0;
+    --texto-medio: #b0b0b0;
+    --transicion-rapida: all 0.3s ease;
+    --sombra-suave: 0 5px 15px rgba(0,0,0,0.05);
+    --sombra-fuerte: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-body {
-    background: var(--pb-bg-gradient);
-    color: var(--pb-text);
-    font-family: var(--font-sans);
-    margin: 0;
-    overflow-x: hidden;
-}
-
-/* ===== GLASSMORPHISM MEJORADO (MÁS VISIBLE Y PREMIUM) ===== */
-.glass-panel {
-    background: var(--pb-glass-bg);
-    backdrop-filter: blur(20px);          /* Desenfoque fuerte para que se note el cristal */
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--pb-glass-border); /* Borde sutil pero visible */
-    box-shadow: var(--pb-glass-shadow);
-}
-
-/* ===== ESQUINAS ASIMÉTRICAS (SOLO 2 ESQUINAS) ===== */
-/* Esto le da un look orgánico, como un pétalo o una gota de perfume */
-.asymmetric-radius {
-    border-radius: 24px 0 24px 0; /* Redondea: Arriba-Izquierda y Abajo-Derecha */
-}
-
-.asymmetric-radius-reverse {
-    border-radius: 0 24px 0 24px; /* Redondea: Arriba-Derecha y Abajo-Izquierda */
-}
-
-/* RESET Y BASE (CORREGIDO: Se agregó el asterisco *) */
+/* ===== RESET Y BASE ===== */
 * {
     margin: 0;
     padding: 0;
@@ -54,6 +39,36 @@ body {
 
 html { scroll-behavior: smooth; }
 
+body {
+    background: var(--pb-bg-gradient);
+    color: var(--pb-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: var(--transicion-rapida); }
+ul { list-style: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+
+
+/* ===== GLASSMORPHISM MEJORADO (MÁS VISIBLE Y PREMIUM) ===== */
+.glass-panel {
+    background: var(--pb-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--pb-glass-border);
+    box-shadow: var(--pb-glass-shadow);
+}
+
+/* ===== ESQUINAS ASIMÉTRICAS (SOLO 2 ESQUINAS) ===== */
+.asymmetric-radius {
+    border-radius: 24px 0 24px 0;
+}
+
+.asymmetric-radius-reverse {
+    border-radius: 0 24px 0 24px;
+}
 
 
 @keyframes liquidFlow {
@@ -87,6 +102,7 @@ ul { list-style: none; }
 
 /* ===== TARJETAS DE PERFUME CRISTALINAS ===== */
 /* Aplicar a las tarjetas de perfume */
+
 .perfume-card {
     composes: glass-panel asymmetric-radius; /* Combina cristal + esquinas asimétricas */
     background: var(--pb-glass-bg);
@@ -198,9 +214,7 @@ ul { list-style: none; }
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
-/* ============================================
-   HEADER AMPLIADO Y LOGO PERFECTO
-   ============================================ */
+/* ===== HEADER Y NAVBAR ===== */
 .header {
     position: fixed; top: 0; left: 0; width: 100%;
     background: linear-gradient(135deg, #2D0A4E 0%, #4A148C 50%, #3A0E6E 100%);
