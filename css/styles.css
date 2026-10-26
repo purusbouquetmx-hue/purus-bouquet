@@ -1,22 +1,48 @@
 
-/* ============================================
-   PURUS BOUQUET - ESTILOS PRINCIPALES (FINAL CORREGIDO)
-   Pasión y Arte en Perfume
-   ============================================ */
-
-/* VARIABLES CSS */
-/* ===== VARIABLES PURUS BOUQUET (ESENCIA CRISTALINA) ===== */
+/* ===== VARIABLES PURUS BOUQUET (ELEGANCIA NEUTRA + ACENTOS) ===== */
 :root {
-    --pb-primary: #1a0b2e;       /* Morado medianoche profundo */
-    --pb-secondary: #764ba2;     /* Amatista vibrante */
-    --pb-accent: #00d2ff;        /* Turquesa cristalino (toque Puroria) */
-    --pb-gold: #D4AF37;          /* Dorado (para unir con Lumina) */
-    --pb-glass: rgba(255, 255, 255, 0.08); /* Cristal esmerilado */
-    --pb-glass-border: rgba(255, 255, 255, 0.15);
-    --pb-text: #f0f0f0;
-    --pb-text-muted: #b8b8d1;
+    --pb-bg-dark: #121212;          /* Fondo base elegante y neutro */
+    --pb-bg-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --pb-glass-bg: rgba(255, 255, 255, 0.08); /* Cristal más visible */
+    --pb-glass-border: rgba(255, 255, 255, 0.25); /* Borde de cristal nítido */
+    --pb-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* Colores exclusivos para la sección Día de Muertos */
+    --dm-orange: #FF6B00;           /* Naranja Cempasúchil vibrante */
+    --dm-purple: #6A1B9A;           /* Morado tradicional profundo */
+    --dm-gold: #FFD700;             /* Toque dorado para lujo */
+    
+    --pb-text: #ffffff;
+    --pb-text-muted: #b0b0b0;
     --font-serif: 'Playfair Display', serif;
     --font-sans: 'Lato', sans-serif;
+}
+
+body {
+    background: var(--pb-bg-gradient);
+    color: var(--pb-text);
+    font-family: var(--font-sans);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* ===== GLASSMORPHISM MEJORADO (MÁS VISIBLE Y PREMIUM) ===== */
+.glass-panel {
+    background: var(--pb-glass-bg);
+    backdrop-filter: blur(20px);          /* Desenfoque fuerte para que se note el cristal */
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--pb-glass-border); /* Borde sutil pero visible */
+    box-shadow: var(--pb-glass-shadow);
+}
+
+/* ===== ESQUINAS ASIMÉTRICAS (SOLO 2 ESQUINAS) ===== */
+/* Esto le da un look orgánico, como un pétalo o una gota de perfume */
+.asymmetric-radius {
+    border-radius: 24px 0 24px 0; /* Redondea: Arriba-Izquierda y Abajo-Derecha */
+}
+
+.asymmetric-radius-reverse {
+    border-radius: 0 24px 0 24px; /* Redondea: Arriba-Derecha y Abajo-Izquierda */
 }
 
 /* RESET Y BASE (CORREGIDO: Se agregó el asterisco *) */
@@ -28,14 +54,7 @@
 
 html { scroll-behavior: smooth; }
 
-/* Fondo animado tipo "líquido etéreo" */
-body {
-    background: linear-gradient(-45deg, #1a0b2e, #2d1b4e, #0f2027, #203a43);
-    background-size: 400% 400%;
-    animation: liquidFlow 15s ease infinite;
-    color: var(--pb-text);
-    font-family: var(--font-sans);
-}
+
 
 @keyframes liquidFlow {
     0% { background-position: 0% 50%; }
@@ -67,26 +86,26 @@ ul { list-style: none; }
 .btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--sombra-fuerte); }
 
 /* ===== TARJETAS DE PERFUME CRISTALINAS ===== */
+/* Aplicar a las tarjetas de perfume */
 .perfume-card {
-    background: var(--pb-glass);
+    composes: glass-panel asymmetric-radius; /* Combina cristal + esquinas asimétricas */
+    background: var(--pb-glass-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--pb-glass-border);
-    border-radius: 20px;
+    border-radius: 20px 0 20px 0; /* Esquinas asimétricas en tarjetas */
     padding: 30px 20px;
     text-align: center;
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
 }
 
-/* Efecto de levitación y brillo al pasar el mouse */
 .perfume-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(212, 175, 55, 0.4); /* Borde dorado sutil al hover */
-    box-shadow: 0 20px 50px 0 rgba(118, 75, 162, 0.3); /* Resplandor amatista */
+    border-color: rgba(255, 107, 0, 0.4); /* Al pasar el mouse, el borde brilla en naranja cempasúchil */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 0, 0.15);
 }
 
 /* La imagen del perfume "flota" */
@@ -905,4 +924,157 @@ section { padding: 100px 0; }
         max-width: 400px; /* Evita que en móvil sea demasiado ancha */
         margin: 0 auto;   /* Centra la tarjeta */
     }
+}
+
+/* ===== SECCIÓN DÍA DE MUERTOS (TONOS TRADICIONALES CON ELEGANCIA) ===== */
+.dia-de-muertos-section {
+    /* Degradado que mezcla el morado profundo con el naranja cempasúchil de forma suave */
+    background: linear-gradient(135deg, #2E003E 0%, #4A148C 40%, #FF6B00 100%);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de partículas o brillo sutil de fondo */
+.dia-de-muertos-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
+    animation: dmGlow 10s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes dmGlow {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.dm-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.dm-badge {
+    display: inline-block;
+    background: rgba(255, 107, 0, 0.2);
+    border: 1px solid var(--dm-orange);
+    color: var(--dm-gold);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.dm-title {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.dm-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.dm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.dm-card {
+    background: rgba(0, 0, 0, 0.3); /* Cristal oscuro para que resalte sobre el fondo colorido */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 107, 0, 0.3);
+    border-radius: 24px 0 24px 0; /* Esquinas asimétricas */
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.dm-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--dm-gold);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255, 107, 0, 0.2);
+}
+
+.dm-image-wrapper {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.dm-image-wrapper img {
+    max-height: 100%;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+    transition: transform 0.5s ease;
+}
+
+.dm-card:hover .dm-image-wrapper img {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.dm-card h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--dm-gold);
+    margin-bottom: 10px;
+}
+
+.dm-card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.dm-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.btn-dm {
+    background: linear-gradient(135deg, var(--dm-orange) 0%, #E65100 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-dm:hover {
+    background: linear-gradient(135deg, var(--dm-gold) 0%, var(--dm-orange) 100%);
+    color: #121212;
+    box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+}
+
+/* Responsive para Día de Muertos */
+@media (max-width: 768px) {
+    .dm-title { font-size: 32px; }
+    .dm-grid { grid-template-columns: 1fr; }
 }
