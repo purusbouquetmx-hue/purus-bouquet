@@ -1092,3 +1092,48 @@ section { padding: 100px 0; }
     .dm-title { font-size: 32px; }
     .dm-grid { grid-template-columns: 1fr; }
 }
+/* ===== BOTÓN PARA REGRESAR AL HUB CENTRAL (PURUS BOUQUET) ===== */
+.btn-back-to-hub {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(26, 11, 46, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(156, 39, 176, 0.4);
+    color: #d580ff; /* Morado/Magenta Purus */
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s ease;
+    opacity: 0.8;
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.2);
+}
+
+.btn-back-to-hub:hover {
+    opacity: 1;
+    background: rgba(156, 39, 176, 0.9);
+    color: #1a0b2e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(156, 39, 176, 0.5);
+    letter-spacing: 3px;
+}
+
+.btn-back-to-hub .hub-icon {
+    font-size: 1rem;
+    transition: transform 0.4s ease;
+}
+
+.btn-back-to-hub:hover .hub-icon { transform: rotate(360deg); }
+
+@media (max-width: 768px) {
+    .btn-back-to-hub .hub-text { display: none; }
+    .btn-back-to-hub { padding: 10px 14px; }
+}
