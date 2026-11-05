@@ -4,7 +4,6 @@ node_modules/
 .pnp.js
 
 # Archivos de compilación (Build)
-dist/
 dist-ssr/
 *.local
 
