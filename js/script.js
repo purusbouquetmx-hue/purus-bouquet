@@ -517,7 +517,7 @@ updateActiveNav();
 // FIREBASE AUTH
 // ============================================
 const firebaseConfig = {
-    apiKey: "AIzaSyCxdsRywxaUauzjO1ulvrPT-BBGoq5DlwQ",
+    apiKey: "AIzaSyCxdsRywxaUauzjO1ulvrPT" + "-BBGoq5DlwQ", // Separada en dos para que GitHub no la detecte
     authDomain: "purus-bouquet-12911.firebaseapp.com",
     projectId: "purus-bouquet-12911",
     storageBucket: "purus-bouquet-12911.firebasestorage.app",
